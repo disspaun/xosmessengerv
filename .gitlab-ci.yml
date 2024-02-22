@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  CACHE_COMPRESSION_LEVEL: "fastest"
+  TRANSFER_METER_FREQUENCY: "2s"
+  GIT_SUBMODULE_STRATEGY: normal
+  GIT_SUBMODULE_PATHS: tm
+  GIT_SUBMODULE_DEPTH: 1
+  GIT_SUBMODULE_FORCE_HTTPS: "true"
+  GIT_CLEAN_FLAGS: -ffdx -e node_modules -e .gradle -e .ccache
+
+before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - export NDK_CCACHE=ccache
+    - export CCACHE_DIR=`pwd`/.ccache
+
+build:android:
+  image: gitlab.prod:5005/common/docker/rn-builder:56
+  cache:
+    - key:
+        files:
+          - yarn.lock
+      paths:
+        - node_modules
+        - .gradle/wrapper
+        - .gradle/caches
+        - .ccache
+  artifacts:
+    paths:
+      - android/app/build/outputs/apk/
+  script:
+    - yarn install
+    - cd android && ./gradlew assembleRelease
+  tags: ["docker"]
+  stage: build
+
+upload_oc:android:
+  dependencies:
+    - build:android
+  needs: ["build:android"]
+  script:
+    - ci/scripts/upload_oc.sh debug
+  tags: ["linux"]
+  stage: deploy

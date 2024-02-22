@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "./tmp",
+  },
+  "include": ["scripts/**/*"]
+}

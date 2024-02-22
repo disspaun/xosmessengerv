@@ -1,0 +1,18 @@
+diff --git a/node_modules/rn-rnf-share-menu/ios/ShareViewController.swift b/node_modules/rn-rnf-share-menu/ios/ShareViewController.swift
+index 12d8c92..975b9a4 100644
+--- a/node_modules/rn-rnf-share-menu/ios/ShareViewController.swift
++++ b/node_modules/rn-rnf-share-menu/ios/ShareViewController.swift
+@@ -43,11 +43,12 @@ class ShareViewController: SLComposeServiceViewController {
+     override func didSelectPost() {
+         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+       guard let items = extensionContext?.inputItems as? [NSExtensionItem] else {
++        
+         cancelRequest()
+         return
+       }
+       
+-      handlePost(items)
++      handlePost(items, extraData: ["text": contentText ?? ""])
+     }
+ 
+     override func configurationItems() -> [Any]! {
