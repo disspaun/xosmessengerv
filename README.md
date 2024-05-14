@@ -1,21 +1,8 @@
-# Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions
 
-## Step 1: Install dependencies
+https://github.com/disspaun/xosmessengerv/assets/113718925/2f748fdc-8257-44dd-b15b-5d88c1a9b97f
+https://github.com/disspaun/xosmessengerv/assets/113718925/91495fec-c96b-437f-b261-8212ca2c3952
+https://github.com/disspaun/xosmessengerv/assets/113718925/70b3269e-f8be-4ccd-80af-7be2e1bad375
+https://github.com/disspaun/xosmessengerv/assets/113718925/571dc917-f267-43fd-b602-8be6438eb87a
 
-```bash
-# using Yarn
-yarn install
-```
-
-## Step 2: Start debug build
-
-```bash
-# Android using Yarn
-yarn android
-# iOS using Yarn
-yarn ios
-or open /ios/utopiaMessengerTest.xcworkspace via xcode
-```
 
